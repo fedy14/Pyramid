@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pyramid JS</title>
+</head>
+<body>
+    <h1>Let's Build a JS Pyramid</h1>
+    <pre id="pyramid"></pre> <!-- Kote nou pral mete piramid la -->
+
+    <script>
+        const character = "Alex";
+        const count = 10;
+        const rows = [];
+        let inverted = false;
+
+        // Fonksyon pou kreye yon ranje nan piramid lan
+        function padRow(rowNumber, rowCount) {
+            return " ".repeat(rowCount - rowNumber) + character.repeat(2 * rowNumber - 1) + " ".repeat(rowCount - rowNumber);
+        }
+
+        // Loop pou bati piramid la
+        for (let i = 1; i <= count; i++) {
+            if (inverted) {
+                rows.unshift(padRow(i, count));
+            } else {
+                rows.push(padRow(i, count));
+            }
+        }
+
+        // Kreye rezilta final la kòm yon sèl string
+        let result = "";
+        for (const row of rows) {
+            result = result + row + "\n";
+        }
+
+        // Afiche nan console a
+        console.log(result);
+
+        // Mete piramid lan nan paj HTML la
+        document.getElementById("pyramid").textContent = result;
+    </script>
+</body>
+</html>
